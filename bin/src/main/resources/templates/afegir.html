@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" data-auto-replace-svg="nest"></script>
+    <title>Afegir Empleat</title>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand " href="/secret">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item ">
+                    <a class="nav-link" href="/dinos/new">Add Dino <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/dinos/list">Dinos List</a>
+                </li>
+
+                <li class="nav-item">
+                    <form th:action="@{/logout}" method="post">
+
+                        <input type="submit" value="Sign Out"/>
+                    </form>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+<form method="post" action="#" th:action="${dinoForm.id!=0} ?@{/dinos/edit/submit}:@{/dinos/new/submit}" th:object="${dinoForm}">
+
+
+    <h1 th:text="${dinoForm.id!=0}?'Edit dino': 'New dino'">New Dino</h1>
+    <div class="form-group">
+        <label for="inputId">Id</label>
+        <i class="fas fa-id-card"></i>
+        <input type="text" placeholder="ID" th:field="*{id}" th:attrappend="readonly=${dinoForm.id!=0}?'readonly':null" class="form-control" id="inputId" aria-describedby="id">
+        <small id="id" class="form-text text-muted"></small>
+    </div>
+    <div class="form-group">
+        <label for="inputName">Name</label>
+        <i class="fas fa-file-signature"></i>
+        <input type="text" placeholder="Nom" th:field="*{name}" class="form-control" id="inputName" aria-describedby="name">
+        <small id="name" class="form-text text-muted"></small>
+    </div>
+    <div class="form-group">
+        <label for="inputSpeed">Speed</label>
+        <i class="fas fa-tachometer-alt"></i>
+        <input type="text" placeholder="Low/Medium/High" th:field="*{speed}" class="form-control" id="inputSpeed"
+               aria-describedby="speed">
+        <small id="speed" class="form-text text-muted"></small>
+    </div>
+    <div class="form-group">
+        <label for="inputWeight">Weight</label>
+        <i class="fas fa-weight-hanging"></i>
+        <input type="text" placeholder="Kg" th:field="*{weight}" class="form-control" id="inputWeight" aria-describedby="weight">
+        <small id="weight" class="form-text text-muted"></small>
+    </div>
+    <div class="form-group">
+        <label for="inputWeight">Feeding</label>
+        <i class="fas fa-utensils"></i>
+        <input type="text" placeholder="Carn./Herb./Omn." th:field="*{feeding}" class="form-control" id="inputfeeding" aria-describedby="feeding">
+        <small id="feed" class="form-text text-muted"></small>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+
